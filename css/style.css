@@ -1,0 +1,58 @@
+body {
+  color: white;
+  margin: 0;
+  background-color: black;
+
+  
+}
+canvas {
+  width: 80%;
+  
+}
+.canvas-wrapper{
+  /* border-style: solid; */
+  background-image: url('../images/bg1.gif');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  width: 80%;
+  height: 700px; 
+  margin: 100px;
+  margin-left: 200px;
+  padding-left: 500px;
+  float: center;
+  padding: 0px;
+}
+.center {
+  text-align: center;
+}
+.game {
+  position: relative;
+}
+#score{
+  position: absolute;
+  top:700px;
+  left:10px;
+  font-size: 70px;
+  
+  border: 1px solid black;
+}
+
+#highscore{
+  position: absolute;
+  top:700px;
+  float: right;
+  left: 1500px;
+  font-size: 60px;
+  color: beige;
+  border: 1px solid black;
+}
+
+#tagline{
+  position: absolute;
+  top:700px;
+  float: right;
+  left: 600px;
+  font-size: 60px;
+  color: beige;
+  border: 1px solid black;
+}
