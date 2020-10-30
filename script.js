@@ -189,7 +189,7 @@ function update() {
 }
 
 
-document.getElementById("highscore").innerHTML = "Highscore:  ";
+// document.getElementById("highscore").innerHTML = "Highscore:  ";
 
 
 
