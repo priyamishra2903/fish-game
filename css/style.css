@@ -37,7 +37,7 @@ canvas {
   border: 1px solid black;
 }
 
-#highscore{
+/* #highscore{
   position: absolute;
   top:94%;
   float: right;
@@ -45,13 +45,13 @@ canvas {
   font-size: 50px;
   color: beige;
   border: 1px solid black;
-}
+} */
 
 #tagline{
   position: absolute;
   top:94%;
   float: right;
-  left: 30%;
+  left: 50%;
   font-size: 50px;
   color: beige;
   border: 1px solid black;
