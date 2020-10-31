@@ -1,5 +1,6 @@
 let canvas = document.getElementById("canvas-top");
 let ctx = canvas.getContext("2d");
+Rotate();
 let gameState = {
   rectPosX: 10,
   rectPosY: canvas.height / 2 - 10,
@@ -16,6 +17,28 @@ let gameState = {
 };
 function random(n) {
   return Math.floor(Math.random() * n);
+}
+function Rotate()
+{
+  if("orientation" in screen) {
+    if(document.documentElement.requestFullscreen) 
+    {
+      document.documentElement.requestFullscreen();
+    } 
+    else if( document.documentElement.mozRequestFullscreen ) 
+    {
+      document.documentElement.mozRequestFullscreen();
+    } 
+    else if( document.documentElement.webkitRequestFullscreen ) {
+      document.documentElement.webkitRequestFullscreen();
+    } 
+    else {
+      document.documentElement.msRequestFullscreen();
+    } 
+
+    screen.orientation.lock('landscape-primary');
+  }
+  
 }
 
 class RectCollider {
@@ -71,6 +94,7 @@ function checkCollision(gameState) {
 }
 
 function update() {
+  Rotate();
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   gameState.enemyTimeout -= 1;
   if (gameState.enemyTimeout == 0) {
@@ -106,8 +130,8 @@ function update() {
     gameState.rectVelocity.y = 0;
   }
   const img3 = new Image();
-  img3.src = 'images/fishyy.png';
-  ctx.drawImage(img3, gameState.rectPosX, gameState.rectPosY, 30, 30);
+  img3.src = 'images/giphy.gif';
+  ctx.drawImage(img3, gameState.rectPosX, gameState.rectPosY, 40, 30);
   // ctx.fillRect(gameState.rectPosX, gameState.rectPosY, 10, 10);
   ctx.fillStyle = "#0000FF";
   const img2 = new Image();
