@@ -1,6 +1,13 @@
+
 let canvas = document.getElementById("canvas-top");
 let ctx = canvas.getContext("2d");
+let myAudio = document.createElement("audio");
+myAudio.src = "sounds/bg.wav";
+// var myGif = GIF();
+// myGif.load("images/giphy.gif");
 Rotate();
+
+
 let gameState = {
   rectPosX: 10,
   rectPosY: canvas.height / 2 - 10,
@@ -80,13 +87,17 @@ function checkCollision(gameState) {
     }
   }
   for (let i = 0; i < gameState.friends.length; ++i) {
+    // (new Audio('sounds/jump.mp3')).play();
     let friendCollider = new RectCollider(
+     
+
       gameState.friends[i].x,
       gameState.friends[i].y,
       5,
       5
     );
     if (playerCollider.isColliding(friendCollider)) {
+      (new Audio('sounds/jump.mp3')).play();
       gameState.playerSpeed *= 1.05;
       gameState.friends.splice(i, 1);
     }
@@ -94,6 +105,7 @@ function checkCollision(gameState) {
 }
 
 function update() {
+  myAudio.play();
   Rotate();
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   gameState.enemyTimeout -= 1;
@@ -131,7 +143,7 @@ function update() {
   }
   const img3 = new Image();
   img3.src = 'images/giphy.gif';
-  ctx.drawImage(img3, gameState.rectPosX, gameState.rectPosY, 40, 30);
+  ctx.drawImage(img3, gameState.rectPosX, gameState.rectPosY, 40, 40);
   // ctx.fillRect(gameState.rectPosX, gameState.rectPosY, 10, 10);
   ctx.fillStyle = "#0000FF";
   const img2 = new Image();
@@ -144,7 +156,7 @@ function update() {
   for (let i = 0; i < gameState.enemies.length; ++i) {
     if (gameState.enemies[i].x < -10) {
       gameState.enemies.splice(i, 1);
-      gameState.score++;
+      gameState.score= gameState.score+5;
     }
   }
 
@@ -194,11 +206,11 @@ function update() {
   }
 
   if (checkCollision(gameState) == true) {
-    (new Audio('sounds/jump.mp3')).play();
+    // (new Audio('sounds/eating.mp3')).play();
     (new Audio('sounds/gameover.wav')).play();
     gameState = {
       rectPosX: 10,
-      rectPosY: canvas.height / 2 - 10,
+      rectPosY: canvas.height / 2 - 2,
       rectVelocity: { x: 0, y: 0 },
       playerSpeed: 0.8,
       enemyTimeout: 60,
@@ -220,6 +232,7 @@ function update() {
 setInterval(update, 20);
 document.addEventListener("keydown", function (event) {
   if (event.keyCode == 39) {
+    
     //right arrow
     gameState.rectVelocity.x = gameState.playerSpeed;
   }
